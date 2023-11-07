@@ -1,19 +1,45 @@
 function stretch() {
   // Your code here
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('done stretching');
+      resolve();
+    }, 1000);
+  })
 }
 
 function runOnTreadmill() {
   // Your code here
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('done running on treadill');
+      resolve();
+    }, 500)
+  })
 }
 
 function liftWeights() {
   // Your code here
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('done lifting weights')
+      resolve();
+    }, 2000)
+  })
 }
 
 function workout() {
   // Your code here
+  stretch()
+  .then(runOnTreadmill)
+  .then(liftWeights)
+  .then(() => {
+    console.log('done working out');
+  })
+  .catch((error) => {
+    console.error(error);
+  })
 }
-
 
 /* ============================ TEST YOUR CODE ============================
 
